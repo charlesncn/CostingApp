@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>AddActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AddActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.e.costingapp</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AlertDialog</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+
+<span class="s0">import </span><span class="s1">android.content.DialogInterface</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.Editable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextWatcher</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.Menu</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.MenuInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.DigitalClock</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.LinearLayout</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextClock</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.android.material.textfield.TextInputEditText</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.text.SimpleDateFormat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Date</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Locale</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">AddActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">TextView disclaimer</span><span class="s0">;</span>
+    <span class="s1">LinearLayout back_icon</span><span class="s0">;</span>
+    <span class="s1">TextInputEditText item_name</span><span class="s0">, </span><span class="s1">cost</span><span class="s0">, </span><span class="s1">quantity</span><span class="s0">, </span><span class="s1">description</span><span class="s0">, </span><span class="s1">supplier</span><span class="s0">, </span><span class="s1">total</span><span class="s0">;</span>
+    <span class="s1">Button delete</span><span class="s0">, </span><span class="s1">add</span><span class="s0">;</span>
+    <span class="s1">TextView date</span><span class="s0">;</span>
+    <span class="s1">DigitalClock time</span><span class="s0">;</span>
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_add)</span><span class="s0">;</span>
+
+        <span class="s1">back_icon = findViewById(R.id.go_back)</span><span class="s0">;</span>
+
+
+
+        <span class="s1">back_icon.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">MainActivity mainActivity =</span><span class="s0">new </span><span class="s1">MainActivity()</span><span class="s0">;</span>
+                <span class="s1">mainActivity.finish()</span><span class="s0">;</span>
+                <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(AddActivity.</span><span class="s0">this, </span><span class="s1">MainActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+                <span class="s1">finish()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">item_name = findViewById(R.id.ed_name_m)</span><span class="s0">;</span>
+        <span class="s1">cost = findViewById(R.id.ed_cost_m)</span><span class="s0">;</span>
+        <span class="s1">quantity = findViewById(R.id.ed_quantity_m)</span><span class="s0">;</span>
+        <span class="s1">description = findViewById(R.id.ed_description_m)</span><span class="s0">;</span>
+        <span class="s1">supplier = findViewById(R.id.ed_supplier_m)</span><span class="s0">;</span>
+        <span class="s1">total =findViewById(R.id.total_cost)</span><span class="s0">;</span>
+
+        <span class="s1">date =findViewById(R.id.ai_date)</span><span class="s0">;</span>
+        <span class="s1">time =findViewById(R.id.ai_time)</span><span class="s0">;</span>
+
+        <span class="s1">disclaimer = findViewById(R.id.disclaimer_text)</span><span class="s0">;</span>
+
+        <span class="s1">delete = findViewById(R.id.delete_btn)</span><span class="s0">;</span>
+        <span class="s1">add = findViewById(R.id.update_btn)</span><span class="s0">;</span>
+
+<span class="s2">//        call method to find total</span>
+        <span class="s1">getTotal()</span><span class="s0">;</span>
+
+        <span class="s2">//        show text when total is clicked</span>
+        <span class="s1">disclaimer.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">Toast.makeText(AddActivity.</span><span class="s0">this, </span><span class="s3">&quot;total will be updated automatically&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+<span class="s2">//        getting time and date</span>
+        <span class="s1">String today_date = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s3">&quot;dd/MM/yy&quot;</span><span class="s0">, </span><span class="s1">Locale.getDefault()).format(</span><span class="s0">new </span><span class="s1">Date())</span><span class="s0">;</span>
+        <span class="s1">String time_now = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s3">&quot;hh:mm:ss z&quot;</span><span class="s0">, </span><span class="s1">Locale.getDefault()).format(</span><span class="s0">new </span><span class="s1">Date())</span><span class="s0">;</span>
+<span class="s2">//        set date</span>
+        <span class="s1">date.setText(today_date)</span><span class="s0">;</span>
+        <span class="s1">time.setText(time_now)</span><span class="s0">;</span>
+
+<span class="s2">//      add button onclick listener</span>
+
+        <span class="s1">add.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+
+                <span class="s1">MyDatabaseHelper1 myDB = </span><span class="s0">new </span><span class="s1">MyDatabaseHelper1(AddActivity.</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s0">if</span><span class="s1">(item_name.toString().trim().equals(</span><span class="s3">&quot;&quot;</span><span class="s1">) &amp;&amp; cost.toString().trim().equals(</span><span class="s3">&quot;&quot;</span><span class="s1">) &amp;&amp; quantity.toString().trim().equals(</span><span class="s3">&quot;&quot;</span><span class="s1">)){</span>
+                    <span class="s1">Toast.makeText(AddActivity.</span><span class="s0">this, </span><span class="s3">&quot;Item name, Cost and Quantity cannot be empty!&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">}</span>
+                <span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">myDB.addProject(item_name.getText().toString().trim()</span><span class="s0">,</span>
+                            <span class="s1">Integer.parseInt(cost.getText().toString().trim())</span><span class="s0">,</span>
+                            <span class="s1">Integer.parseInt(quantity.getText().toString().trim())</span><span class="s0">,</span>
+                            <span class="s1">description.getText().toString().trim()</span><span class="s0">,</span>
+                            <span class="s1">supplier.getText().toString().trim())</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">public boolean </span><span class="s1">onCreateOptionsMenu(Menu menu) {</span>
+        <span class="s1">MenuInflater inflater = getMenuInflater()</span><span class="s0">;</span>
+        <span class="s1">inflater.inflate(R.menu.my_menu</span><span class="s0">, </span><span class="s1">menu)</span><span class="s0">;</span>
+        <span class="s0">return super</span><span class="s1">.onCreateOptionsMenu(menu)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item){</span>
+        <span class="s0">if</span><span class="s1">(item.getItemId() == R.id.cancel){</span>
+            <span class="s1">confirmDialog()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+
+        <span class="s0">return super</span><span class="s1">.onOptionsItemSelected(item)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">void </span><span class="s1">confirmDialog(){</span>
+        <span class="s1">AlertDialog.Builder builder = </span><span class="s0">new </span><span class="s1">AlertDialog.Builder(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">builder.setTitle(</span><span class="s3">&quot;Discard Data!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">builder.setMessage(</span><span class="s3">&quot;Are you sure you want to discard this data?&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">builder.setPositiveButton(</span><span class="s3">&quot;Yes&quot;</span><span class="s0">, new </span><span class="s1">DialogInterface.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(DialogInterface dialogInterface</span><span class="s0">, int </span><span class="s1">i) {</span>
+                <span class="s1">item_name.getText().clear()</span><span class="s0">;</span>
+                <span class="s1">cost.getText().clear()</span><span class="s0">;</span>
+                <span class="s1">description.getText().clear()</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">builder.setNegativeButton(</span><span class="s3">&quot;No&quot;</span><span class="s0">, new </span><span class="s1">DialogInterface.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(DialogInterface dialogInterface</span><span class="s0">, int </span><span class="s1">i) {</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">builder.create().show()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">void </span><span class="s1">getTotal(){</span>
+        <span class="s1">TextWatcher textWatcher = </span><span class="s0">new </span><span class="s1">TextWatcher() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">beforeTextChanged(CharSequence s</span><span class="s0">, int </span><span class="s1">start</span><span class="s0">, int </span><span class="s1">count</span><span class="s0">, int </span><span class="s1">after) {</span>
+
+            <span class="s1">}</span>
+
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onTextChanged(CharSequence s</span><span class="s0">, int </span><span class="s1">start</span><span class="s0">, int </span><span class="s1">before</span><span class="s0">, int </span><span class="s1">count) {</span>
+
+                <span class="s0">if</span><span class="s1">(!cost.getText().toString().trim().equals(</span><span class="s3">&quot;&quot;</span><span class="s1">) &amp;&amp; !quantity.getText().toString().trim().equals(</span><span class="s3">&quot;&quot;</span><span class="s1">)){</span>
+                    <span class="s0">int </span><span class="s1">temp_cost = Integer.parseInt(cost.getText().toString().trim())</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">temp_quantity = Integer.parseInt(quantity.getText().toString().trim())</span><span class="s0">;</span>
+                    <span class="s1">total.setText(String.valueOf(temp_cost * temp_quantity))</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">afterTextChanged(Editable s) {</span>
+
+            <span class="s1">}</span>
+        <span class="s1">}</span><span class="s0">;</span>
+        <span class="s1">cost.addTextChangedListener(textWatcher)</span><span class="s0">;</span>
+        <span class="s1">quantity.addTextChangedListener(textWatcher)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

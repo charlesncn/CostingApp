@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#000033">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/round_bottom_bg"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-19dp">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/antic"
+            android:text="upload image"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/edp_update_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edpimg"
+            app:layout_constraintVertical_bias="0.136" />
+
+        <TextView
+            android:id="@+id/edp_update_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif"
+            android:text="last updates 30/05/2020"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/edpimg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/go_back"
+            app:srcCompat="@drawable/icon_image" />
+
+        <Spinner
+            android:id="@+id/edp_spinner"
+            android:layout_width="110dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round_white_bg"
+            android:entries="@array/status_array"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edp_time" />
+
+        <DigitalClock
+            android:id="@+id/edp_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/antic"
+            android:text="10:45 am"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edp_date" />
+
+        <TextView
+            android:id="@+id/edp_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/antic"
+            android:text="06/04/2020"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editing_panel" />
+
+        <LinearLayout
+            android:id="@+id/go_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_btn2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/icon_go_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="back"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/editing_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/amiko"
+            android:text="editing panel"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_top_white_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="625dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingBottom="30dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfl_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="item name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:inputType="textAutoComplete"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="sans-serif-light"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tf_start_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Cost"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tfl_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_cost2"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfl_end_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Quantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tf_start_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_quantity2"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfl_location"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-light"
+                android:hint="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tfl_end_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_description2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage|textLongMessage|textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfl_cost"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-light"
+                android:hint="supplier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tfl_location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_supplier2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage|textLongMessage|textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfl_duration"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-light"
+                android:hint="total"
+                app:layout_constraintTop_toBottomOf="@+id/tfl_cost">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage|textLongMessage|textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:enabled="false"
+                    android:textColor="#000"
+                    android:paddingRight="5dp"
+                    android:textAlignment="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/disclaimer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amiko"
+                android:text="Total will be computed automaticaly"
+                android:textColor="#ff0000"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tfl_duration" />
+
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="52dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="#D1D0D0"-->
+<!--                android:editable="false"-->
+<!--                android:hint="total"-->
+<!--                android:textSize="24sp"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/ed_supplier" />-->
+
+            <Button
+                android:id="@+id/delete_btn2"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_button"
+                android:text="delete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/update_btn2" />
+
+            <Button
+                android:id="@+id/update_btn2"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/update_round_btn"
+                android:text="update"
+                android:textColor="#000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disclaimer_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>

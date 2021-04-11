@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000053"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    tools:context=".SignUp_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/chonburi"
+                android:text="SIGN UP"
+                android:textColor="#fff"
+                android:textSize="34dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/sign_up_bg"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+
+                <LinearLayout
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="create your account here."
+                        android:textColor="#F44336"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ed_username"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Username">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/username_sign"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="text"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ed_password"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Password">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/pwd_sign"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="textPassword"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ed_pwd"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Confirm Password">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/cmf_pwd"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="textPassword"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ed_department"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Department">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/department_sign"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:fontFamily="sans-serif-light"
+                            android:inputType="text"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:text="Already have account?"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="#000"
+                            android:fontFamily="@font/aldrich"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/sign_in"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="20dp"
+                            android:text="sign in"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/aldrich"
+                            android:textColor="#ff0000"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_white_bg"
+                android:layout_marginTop="30dp"
+                android:text="submit"
+                android:fontFamily="@font/aldrich"
+                android:textColor="#ff0000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</LinearLayout>

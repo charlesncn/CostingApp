@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>Items_fragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #629755; font-style: italic;}
+.s3 { color: #629755; font-weight: bold; font-style: italic;}
+.s4 { color: #808080;}
+.s5 { color: #6a8759;}
+.s6 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Items_fragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.e.costingapp</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.database.Cursor</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.recyclerview.widget.LinearLayoutManager</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.recyclerview.widget.RecyclerView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+
+<span class="s2">/**</span>
+ <span class="s2">* A simple {</span><span class="s3">@link </span><span class="s2">Fragment} subclass.</span>
+ <span class="s2">* Use the  factory method to</span>
+ <span class="s2">* create an instance of this fragment.</span>
+ <span class="s2">*/</span>
+<span class="s0">public class </span><span class="s1">Items_fragment </span><span class="s0">extends </span><span class="s1">Fragment {</span>
+
+    <span class="s1">RecyclerView recyclerView</span><span class="s0">;</span>
+<span class="s4">//    FloatingActionButton addbutton;</span>
+<span class="s4">//    private int STORAGE_PERMISSION_CODE= 1;</span>
+    <span class="s1">MyDatabaseHelper1 myDB</span><span class="s0">;</span>
+    <span class="s1">ArrayList&lt;String&gt; item_id</span><span class="s0">, </span><span class="s1">item_name</span><span class="s0">, </span><span class="s1">item_cost</span><span class="s0">, </span><span class="s1">item_qtt</span><span class="s0">, </span><span class="s1">item_desc</span><span class="s0">, </span><span class="s1">item_supplier</span><span class="s0">;</span>
+    <span class="s1">CustomAdapter customAdapter</span><span class="s0">;</span>
+
+    <span class="s4">//ImageView empty_image;</span>
+    <span class="s4">//TextView empty_text;</span>
+
+    <span class="s4">// TODO: Rename parameter arguments, choose names that match</span>
+    <span class="s4">// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER</span>
+    <span class="s0">private static final </span><span class="s1">String ARG_PARAM1 = </span><span class="s5">&quot;param1&quot;</span><span class="s0">;</span>
+    <span class="s0">private static final </span><span class="s1">String ARG_PARAM2 = </span><span class="s5">&quot;param2&quot;</span><span class="s0">;</span>
+
+    <span class="s4">// TODO: Rename and change types of parameters</span>
+    <span class="s0">private </span><span class="s1">String mParam1</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String mParam2</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Items_fragment() {</span>
+        <span class="s4">// Required empty public constructor</span>
+    <span class="s1">}</span>
+
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(getArguments() != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">mParam1 = getArguments().getString(ARG_PARAM1)</span><span class="s0">;</span>
+            <span class="s1">mParam2 = getArguments().getString(ARG_PARAM2)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View onCreateView(LayoutInflater inflater</span><span class="s0">, </span><span class="s1">ViewGroup container</span><span class="s0">,</span>
+                             <span class="s1">Bundle savedInstanceState) {</span>
+        <span class="s4">// Inflate the layout for this fragment</span>
+        <span class="s1">View rootView = inflater.inflate(R.layout.fragment_items</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+
+<span class="s4">//        addbutton = rootView.findViewById(R.id.actionBtn);</span>
+        <span class="s1">recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerview1)</span><span class="s0">;</span>
+        <span class="s4">//empty_image = rootView.findViewById(R.id.img_no_data);</span>
+        <span class="s4">//empty_text = rootView.findViewById(R.id.tv_no_data);</span>
+
+        <span class="s1">myDB =</span><span class="s0">new </span><span class="s1">MyDatabaseHelper1(getContext())</span><span class="s0">;</span>
+        <span class="s1">item_id =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">item_name =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">item_cost =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">item_qtt =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">item_desc =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">item_supplier =</span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+
+        <span class="s1">storeDataInArray()</span><span class="s0">;</span>
+
+        <span class="s1">customAdapter = </span><span class="s0">new </span><span class="s1">CustomAdapter(getActivity()</span><span class="s0">, </span><span class="s1">getContext()</span><span class="s0">, </span><span class="s1">item_id</span><span class="s0">, </span><span class="s1">item_name</span><span class="s0">, </span><span class="s1">item_cost</span><span class="s0">, </span><span class="s1">item_qtt</span><span class="s0">, </span><span class="s1">item_desc</span><span class="s0">, </span><span class="s1">item_supplier)</span><span class="s0">;</span>
+        <span class="s1">recyclerView.setAdapter(customAdapter)</span><span class="s0">;</span>
+        <span class="s1">recyclerView.setLayoutManager(</span><span class="s0">new </span><span class="s1">LinearLayoutManager(getActivity()))</span><span class="s0">;</span>
+
+
+        <span class="s0">return </span><span class="s1">rootView</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">void </span><span class="s1">storeDataInArray(){</span>
+        <span class="s1">Cursor cursor =myDB.readAllData()</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(cursor!=</span><span class="s0">null </span><span class="s1">&amp;&amp; cursor.getCount() &gt; </span><span class="s6">0</span><span class="s1">) {</span>
+            <span class="s0">if </span><span class="s1">(cursor.getCount() == </span><span class="s6">0</span><span class="s1">) {</span>
+                <span class="s4">//empty_image.setVisibility(View.VISIBLE);</span>
+               <span class="s4">// empty_text.setVisibility(View.VISIBLE);</span>
+                <span class="s1">Toast.makeText(getContext()</span><span class="s0">, </span><span class="s5">&quot;No Data&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s0">while </span><span class="s1">(cursor.moveToNext()) {</span>
+                    <span class="s1">item_id.add(cursor.getString(</span><span class="s6">0</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">item_name.add(cursor.getString(</span><span class="s6">1</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">item_cost.add(cursor.getString(</span><span class="s6">2</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">item_qtt.add(cursor.getString(</span><span class="s6">3</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">item_desc.add(cursor.getString(</span><span class="s6">4</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">item_supplier.add(cursor.getString(</span><span class="s6">5</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">}</span>
+               <span class="s4">// empty_image.setVisibility(View.GONE);</span>
+               <span class="s4">// empty_text.setVisibility(View.GONE);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+
+<span class="s1">}</span></pre>
+</body>
+</html>
